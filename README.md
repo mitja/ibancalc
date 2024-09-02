@@ -51,7 +51,7 @@ Die Ortsdaten werden anhand der IP-Adresse ermittelt. Die IP-Adresse wird nicht 
 
 ## Kontakt und Impressum
 
-Verantwortlich für diese Website ist:
+Ich bin Mitja und verantwortlich für diese Website. Hier sind meine Kontaktdaten:
 
 * Mitja Martini
 * Helmkrautstraße 32
