@@ -4,3 +4,4 @@ schwifty
 pydantic
 jinja2
 markdown
+beautifulsoup4
