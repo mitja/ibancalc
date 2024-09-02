@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBAN Calc - Der einfache IBAN Rechner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    maxWidth: {
+                        'custom': '680px',
+                    },
+                    backgroundImage: {
+                        'pastel-gradient': 'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1)',
+                    },
+                },
+            },
+        }
+    </script>
+    <script>
+        function calculateIBAN() {
+            const countryCode = document.getElementById('country_code').value;
+            const bankCode = document.getElementById('bank_code').value;
+            const accountCode = document.getElementById('account_code').value;
+
+            fetch('/generate_iban', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    country_code: countryCode,
+                    bank_code: bankCode,
+                    account_code: accountCode
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = `Generated IBAN: ${data.iban}`;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('result').textContent = 'Error generating IBAN';
+            });
+        }
+    </script>
+</head>
+<body class="bg-pastel-gradient min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-2 inline-flex items-center">
+                <span class="bg-white bg-opacity-70 px-4 py-2 rounded">ibancalc.com</span>
+            </h1>
+            <p class="text-xl text-gray-800 mt-2">Der einfache IBAN Rechner.</p>
+        </div>
+        
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form onsubmit="event.preventDefault(); calculateIBAN();">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="country_code">
+                        Land
+                    </label>
+                    <select id="country_code" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="DE">DE (Germany)</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="bank_code">
+                        Bankleitzahl (BLZ)
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="bank_code" type="text" placeholder="Enter bank code">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="account_code">
+                        Kontonummer
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="account_code" type="text" placeholder="Enter account code">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Generate IBAN
+                    </button>
+                </div>
+            </form>
+            <div id="result" class="mt-4 text-lg font-semibold"></div>
+        </div>
+        
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8">
+            <h2 class="text-2xl font-bold mb-4">README</h2>
+            <div class="readme-content">
+                {{ readme_content | safe }}
+            </div>
+        </div>
+    </div>
+    <script defer data-domain="ibancalc.com" src="https://plausible.io/js/script.js"></script>
+</body>
+</html>
