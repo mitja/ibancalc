@@ -28,7 +28,7 @@ Wenn Du genau wissen willst, wie dieser IBAN Rechner funktionert, dann kannst Du
 
 ## Dein Feedback und Verbesserungsvorschläge
 
-Falls Du einen Fehler bei IBAN Calc feststellst, kannst Du gerne ein [Ticket](https://github.com/mitja/ibancalc/issues). Falls es ein sicherheitsrelevantes Problem ist, sende mir bitte eine E-Mail an hi [at] mitjamartini [dot] com. Ich nehme gerne auch Verbesserungsvorschläge entgehen, kann allerdings nicht versprechen, dass ich sie umsetze.
+Falls Du einen Fehler bei IBAN Calc feststellst, kannst Du gerne ein [Ticket](https://github.com/mitja/ibancalc/issues) anlegen. Falls es ein sicherheitsrelevantes Problem ist, sende mir bitte eine E-Mail an hi [at] mitjamartini [dot] com. Ich nehme gerne auch Verbesserungsvorschläge entgehen, kann allerdings nicht versprechen, dass ich sie umsetze.
 
 ## Datenschutz
 
